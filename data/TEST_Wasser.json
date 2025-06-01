@@ -1,34 +1,10 @@
 [
     {
-        "Datum": "01.03.2015",
-        "Z\u00e4hlerstand_Wasser": 1000.0
-    },
-    {
-        "Datum": "01.06.2015",
-        "Z\u00e4hlerstand_Wasser": 1020.0
-    },
-    {
-        "Datum": "08.09.2015",
-        "Z\u00e4hlerstand_Wasser": 1050.0
-    },
-    {
-        "Datum": "02.12.2015",
-        "Z\u00e4hlerstand_Wasser": 1070.0
-    },
-    {
-        "Datum": "06.02.2016",
-        "Z\u00e4hlerstand_Wasser": 1090.0
-    },
-    {
-        "Datum": "04.04.2016",
-        "Z\u00e4hlerstand_Wasser": 1100.0
-    },
-    {
-        "Datum": "01.06.2016",
-        "Z\u00e4hlerstand_Wasser": 1120.0
-    },
-    {
         "Datum": "01.01.2025",
         "Z\u00e4hlerstand_Wasser": 2000.0
+    },
+    {
+        "Datum": "30.05.2025",
+        "Z\u00e4hlerstand_Wasser": 2050.0
     }
 ]

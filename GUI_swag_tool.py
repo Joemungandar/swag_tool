@@ -7,11 +7,17 @@ import swag_datahandler as sdh
 
 
 # Grundaufbau:
+COLOR_THEME_1 = "green" # Farbe der Fenster & Label
+COLOR_THEME_2 = "lime" # Farbe der Textfelder & mancher Buttons
+TEXT_COLOR = "black"
+BUTTON_FG_COLOR = "black"
 swag = Tk()
 swag.title("SWaG-Tool")
 swag.configure(bg="black")
-swag_frame = Frame(relief=RAISED,bd=8,bg="green")
+swag_frame = Frame(relief=RAISED,bd=8,bg=COLOR_THEME_1)
 category = StringVar(swag_frame)
+
+
 
 ### Methoden:
 # Methode, um Daten aus der gespeicherten json-Datei zu löschen
@@ -49,17 +55,17 @@ def erase_data_menu():
     print("Daten löschen gedrückt...")
     top = Toplevel(swag)
     top.configure(bg="black")
-    top_frame = Frame(top, relief=RAISED,bd=8,bg="green")
+    top_frame = Frame(top, relief=RAISED,bd=8,bg=COLOR_THEME_1)
 
     # Label, Button:
-    label_erase = Label(top_frame, text = "DATEN LÖSCHEN", font=30, background="green", height=4)
-    label_from = Label(top_frame, text = "VON:", background="green", height=2)
-    label_until = Label(top_frame, text = "BIS (inkl.):", background="green", height=2)
+    label_erase = Label(top_frame, text = "DATEN LÖSCHEN", font=30, background=COLOR_THEME_1, height=4)
+    label_from = Label(top_frame, text = "VON:", background=COLOR_THEME_1, height=2)
+    label_until = Label(top_frame, text = "BIS (inkl.):", background=COLOR_THEME_1, height=2)
     global datepicker_erase_from, datepicker_erase_until
-    datepicker_erase_from = DateEntry(top_frame, width=12, background="lime", foreground="black", date_pattern="dd.mm.yyyy")
-    datepicker_erase_until = DateEntry(top_frame, width=12, background="lime", foreground="black", date_pattern="dd.mm.yyyy")
-    button_erase_data = Button(top_frame, bg="red",fg="black", text="Daten löschen", command=erase_data)
-    button_close = Button(top_frame, bg="orange", fg="black", text="Fenster schließen", command=close_window)
+    datepicker_erase_from = DateEntry(top_frame, width=12, background=COLOR_THEME_2, foreground=TEXT_COLOR, date_pattern="dd.mm.yyyy")
+    datepicker_erase_until = DateEntry(top_frame, width=12, background=COLOR_THEME_2, foreground=TEXT_COLOR, date_pattern="dd.mm.yyyy")
+    button_erase_data = Button(top_frame, bg="red",fg=TEXT_COLOR, text="Daten löschen", command=erase_data)
+    button_close = Button(top_frame, bg="orange", fg=TEXT_COLOR, text="Fenster schließen", command=close_window)
 
     # Layout:
     top_frame.grid()
@@ -141,15 +147,15 @@ def show_consumption_gui():
     sdh.show_consumption(tmp_category)
 
 # Labels:
-label_title = Label(swag_frame, bg="green", fg="black", text="SWAG-Tool", font=30, height=4)
-label_category = Label(swag_frame, bg="green", fg="black", text="Kategorie:", height=2)
-label_date = Label(swag_frame, bg="green", fg="black", text="Datum:", height=2)
-label_meter_graph = Label(swag_frame, bg="green", fg="black", text="Zählerstand:", height=2)
-label_seperator = Label(swag_frame, bg="green", fg="black", text="-----------------------------------", height=2)
-label_last_reading = Label(swag_frame, bg="green", fg="black", text="Letzter Zählerstand: ")
-label_info_last_reading = Label(swag_frame, bg="lime", fg="black", text="")
-label_unit = Label(swag_frame, bg="green", fg="black", text="kWh")
-label_unit_2 = Label(swag_frame, bg="green", fg="black", text="kWh")
+label_title = Label(swag_frame, bg=COLOR_THEME_1, fg=TEXT_COLOR, text="SWAG-Tool", font=30, height=4)
+label_category = Label(swag_frame, bg=COLOR_THEME_1, fg=TEXT_COLOR, text="Kategorie:", height=2)
+label_date = Label(swag_frame, bg=COLOR_THEME_1, fg=TEXT_COLOR, text="Datum:", height=2)
+label_meter_graph = Label(swag_frame, bg=COLOR_THEME_1, fg=TEXT_COLOR, text="Zählerstand:", height=2)
+label_seperator = Label(swag_frame, bg=COLOR_THEME_1, fg=TEXT_COLOR, text="-----------------------------------", height=2)
+label_last_reading = Label(swag_frame, bg=COLOR_THEME_1, fg=TEXT_COLOR, text="Letzter Zählerstand: ")
+label_info_last_reading = Label(swag_frame, bg=COLOR_THEME_2, fg=TEXT_COLOR, text="")
+label_unit = Label(swag_frame, bg=COLOR_THEME_1, fg=TEXT_COLOR, text="kWh")
+label_unit_2 = Label(swag_frame, bg=COLOR_THEME_1, fg=TEXT_COLOR, text="kWh")
 
 # Drop-Down-Menu
 category.set("Strom")
@@ -157,18 +163,18 @@ categories = ["Strom", "Wasser", "Gas", "Heizstrom"]
 category_menu = OptionMenu(swag_frame, category, *categories, command=update_unit)
 
 # Datums- & Textfelder:
-datepicker = DateEntry(swag_frame, width=12, background="lime", foreground="black", date_pattern="dd.mm.yyyy")
-input_meter_reading = Entry(swag_frame,bg="lime",fg="black")
+datepicker = DateEntry(swag_frame, width=12, background=COLOR_THEME_2, foreground=COLOR_THEME_2, date_pattern="dd.mm.yyyy")
+input_meter_reading = Entry(swag_frame,bg=COLOR_THEME_2,fg=COLOR_THEME_2)
 
 # Start Keylistener
 allow_only_numbers = swag.register(keylistener)
 input_meter_reading.config(validate="key", validatecommand=(allow_only_numbers, "%P"))
 
 # Buttons:
-button_erase = Button(swag_frame,bg="red",fg="black", text="Zählerstände löschen...", command=erase_data_menu)
+button_erase = Button(swag_frame,bg="red",fg=BUTTON_FG_COLOR, text="Zählerstände löschen...", command=erase_data_menu)
 button_save = Button(swag_frame,bg="orange", fg="white", text="Speichere Daten...", command=save_as_json)
-button_show_graph = Button(swag_frame, bg="lime", fg="black", text="Plot Zählerstand", command=show_graph_gui)
-button_show_consumption = Button(swag_frame, bg="lime", fg="black", text="Plot Verbrauch", command=show_consumption_gui)
+button_show_graph = Button(swag_frame, bg=COLOR_THEME_2, fg=BUTTON_FG_COLOR, text="Plot Zählerstand", command=show_graph_gui)
+button_show_consumption = Button(swag_frame, bg=COLOR_THEME_2, fg=BUTTON_FG_COLOR, text="Plot Verbrauch", command=show_consumption_gui)
 
 # Baue Umgebung:
 swag_frame.grid()
