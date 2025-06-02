@@ -1,5 +1,3 @@
-# AUTOR: Jens Fabry
-
 from tkinter import *
 import tkinter.messagebox
 from tkcalendar import DateEntry
@@ -31,7 +29,7 @@ def erase_data():
         erase_until = datepicker_erase_until.get()
         success = sdh.delete_from_Json_file(file_name, erase_from, erase_until)
         if not success:
-            tkinter.messagebox.askyesno(title="Eingabefehler", message="Fehler bei der Eingabe! Bitte überprüfe, ob das Datum unten weiter in der Zukunft liegt, als das Datum oben!")
+            tkinter.messagebox.askokcancel(title="Eingabefehler", message="Fehler bei der Eingabe! Bitte überprüfe, ob das Datum unten weiter in der Zukunft liegt, als das Datum oben!")
 
 
 # Methode, die nur float-Zahlen innerhalb eines "Entry" zulässt
@@ -87,11 +85,11 @@ def save_as_json():
         last_reading, last_date = update_last_reading()
         print(last_date, type(last_date))
         if(last_reading > meter_value):
-            tkinter.messagebox.askyesno(title="Messwert-Fehler", message="Es kann kein niedrigerer Wert als " + str(last_reading) + " eingegeben werden!")
+            tkinter.messagebox.askokcancel(title="Messwert-Fehler", message="Es kann kein niedrigerer Wert als " + str(last_reading) + " eingegeben werden!")
             return
         check_date = sdh.check_dates(date, last_date)
         if not check_date:
-            tkinter.messagebox.askyesno(title="Datum-Fehler", message="Es kann kein niedrigeres oder gleiches Datum als das letzte Datum (" + last_date + ") eingegeben werden!")
+            tkinter.messagebox.askokcancel(title="Datum-Fehler", message="Es kann kein niedrigeres oder gleiches Datum als das letzte Datum (" + last_date + ") eingegeben werden!")
             return
         new_entry = {
             "Datum": datepicker.get(),
@@ -104,7 +102,7 @@ def save_as_json():
     except(ValueError):
         error_message = "Bitte Gib in das Feld eine gültige Dezimalzahl ein (mit PUNKT, kein Text, kein Komma!)"
         print(error_message)
-        error = tkinter.messagebox.askyesno(title="FEHLER", message=error_message)
+        error = tkinter.messagebox.askokcancel(title="FEHLER", message=error_message)
 
 # Methode zur Ermittlung des letzten Zählerstands
 def update_last_reading():
