@@ -55,9 +55,7 @@ def save_To_Json_File(data_name, new_entry, override = False):
     with open(path_to_file, "w", encoding="UTF-8") as json_data:
         json.dump(data, json_data, indent=4)
 
-
-# TODO: Auch in der Mitte und am Schluss der Datei muss ein Löschen möglich sein, nicht nur am Start
-# TODO: Edge-Cases überprüfen: Datei leer & Datei enthält nur einen Eintrag
+1
 def delete_from_Json_file(data_name, delete_from, delete_until):
     current_data = read_data_from_file(data_name)
     if current_data == []:
