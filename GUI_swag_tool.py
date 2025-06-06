@@ -111,14 +111,17 @@ def update_last_reading():
     if len(tmp_list_readings) == 0:
         print("Keine gefüllte Liste gefunden")
         label_info_last_reading["text"] = "---"
+        label_info_last_date["text"] = "---"
         default_date = "01.01.0001"
         return 0.0, default_date
     last_entry = tmp_list_readings[-1]
+    # Letzen Zählerstand anzeigen:
     reading_category = "Zählerstand_" + category.get()
     last_reading = last_entry[reading_category]
-    print("Letzter Eintrag:", last_reading, type(last_reading))
     label_info_last_reading["text"] = last_reading
+    # Letztes Datum anzeigen:
     last_date = last_entry["Datum"]
+    label_info_last_date["text"] = last_date
     return last_reading, last_date
     
 
@@ -152,6 +155,8 @@ label_meter_graph = Label(swag_frame, bg=COLOR_THEME_1, fg=TEXT_COLOR, text="Zä
 label_seperator = Label(swag_frame, bg=COLOR_THEME_1, fg=TEXT_COLOR, text="-----------------------------------", height=2)
 label_last_reading = Label(swag_frame, bg=COLOR_THEME_1, fg=TEXT_COLOR, text="Letzter Zählerstand: ")
 label_info_last_reading = Label(swag_frame, bg=COLOR_THEME_2, fg=TEXT_COLOR, text="")
+label_last_date = Label(swag_frame, bg=COLOR_THEME_1, fg=TEXT_COLOR, text="Letztes Datum: ")
+label_info_last_date = Label(swag_frame, bg=COLOR_THEME_2, fg=TEXT_COLOR, text="")
 label_unit = Label(swag_frame, bg=COLOR_THEME_1, fg=TEXT_COLOR, text="kWh")
 label_unit_2 = Label(swag_frame, bg=COLOR_THEME_1, fg=TEXT_COLOR, text="kWh")
 
@@ -184,6 +189,8 @@ label_meter_graph.grid(column=0, row=4)
 label_seperator.grid(column=0,row=5,columnspan=4)
 label_last_reading.grid(column=0, row=6)
 label_info_last_reading.grid(column=1, row=6)
+label_last_date.grid(column=0, row=7)
+label_info_last_date.grid(column=1, row=7)
 label_unit.grid(column=2, row=4)
 label_unit_2.grid(column=2, row=6)
 # Eingabe-Felder
