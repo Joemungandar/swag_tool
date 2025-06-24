@@ -1,18 +1,14 @@
 [
     {
-        "Datum": "01.02.2025",
-        "Z\u00e4hlerstand_Strom": 9020.0
-    },
-    {
-        "Datum": "01.03.2025",
-        "Z\u00e4hlerstand_Strom": 9100.0
-    },
-    {
         "Datum": "08.04.2025",
         "Z\u00e4hlerstand_Strom": 9150.0
     },
     {
         "Datum": "30.05.2025",
         "Z\u00e4hlerstand_Strom": 9898.09098
+    },
+    {
+        "Datum": "24.06.2025",
+        "Z\u00e4hlerstand_Strom": 10000.45
     }
 ]

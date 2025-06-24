@@ -167,7 +167,7 @@ category_menu = OptionMenu(swag_frame, category, *categories, command=update_uni
 
 # Datums- & Textfelder:
 datepicker = DateEntry(swag_frame, width=12, background=COLOR_THEME_2, foreground=COLOR_THEME_2, date_pattern="dd.mm.yyyy")
-input_meter_reading = Entry(swag_frame,bg=COLOR_THEME_2,fg=COLOR_THEME_2)
+input_meter_reading = Entry(swag_frame,bg=COLOR_THEME_2,fg=TEXT_COLOR)
 
 # Start Keylistener
 allow_only_numbers = swag.register(keylistener)
